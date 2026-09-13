@@ -22,6 +22,8 @@ export default function LoginForm() {
       redirect: false,
     })
 
+    console.log(res);
+
     if (!res?.ok) {
       setError(res?.error || 'An error occurred');
       return;

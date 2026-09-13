@@ -20,6 +20,7 @@ export const authOptions: NextAuthOptions = {
           Throw <error>: Login failed
           Return <{ id, ...user? }>: Login successful
         */
+        console.log(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`);
 
         const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/login`, {
           method: 'POST',

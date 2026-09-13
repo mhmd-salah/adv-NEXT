@@ -25,7 +25,7 @@ export default function RootLayout({
 }>) {
   // throw new Error('Failed to fetch layout');
   return (
-    <html lang="en">
+    <html lang="en" className="dark">
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >

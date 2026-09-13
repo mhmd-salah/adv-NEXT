@@ -1,7 +1,7 @@
 import { getServerSession } from "next-auth";
 import NewProducts from "./_components/new-products";
 import { authOptions } from "@/auth";
-import { hasPermission } from "@/lib/util/abac.util";
+import { hasPermission } from "@/lib/utils/abac.util";
 import { forbidden } from "next/navigation";
 
 

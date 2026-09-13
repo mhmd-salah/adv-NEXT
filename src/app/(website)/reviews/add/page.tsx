@@ -1,5 +1,5 @@
 import { authOptions } from "@/auth";
-import { hasPermission } from "@/lib/util/abac.util";
+import { hasPermission } from "@/lib/utils/abac.util";
 import { getServerSession } from "next-auth";
 import { forbidden } from "next/navigation";
 

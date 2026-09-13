@@ -6,7 +6,7 @@ import { IUpdateProfileFields, IUpdateProfileResponse } from "@/lib/types/auth";
 import { updateTag } from "next/cache";
 import { cookies } from "next/headers";
 import { getToken } from "next-auth/jwt";
-import { getNextAuthToken } from "@/lib/util/auth.util";
+import { getNextAuthToken } from "@/lib/utils/auth.util";
 
 export async function updateProfileAction(fields: IUpdateProfileFields) {
   const jwt = await getNextAuthToken();
