@@ -19,22 +19,22 @@ export default async function proxy(request: NextRequest) {
   // User cannot access private routes without authentication
   // User cannot access auth routes if they are authenticated
 
-  if (privateRoutes.has(pathname)) {
-    if (jwt) return NextResponse.next();
+  // if (privateRoutes.has(pathname)) {
+  //   if (jwt) return NextResponse.next();
 
-    const redirectUrl = new URL('/login', request.nextUrl.origin);
+  //   const redirectUrl = new URL('/login', request.nextUrl.origin);
 
-    redirectUrl.searchParams.set('callbackUrl', pathname)
+  //   redirectUrl.searchParams.set('callbackUrl', pathname)
 
-    return NextResponse.redirect(redirectUrl)
-  }
+  //   return NextResponse.redirect(redirectUrl)
+  // }
 
-  if (authRoutes.has(pathname)) {
-    if (!jwt) return NextResponse.next();
+  // if (authRoutes.has(pathname)) {
+  //   if (!jwt) return NextResponse.next();
 
-    const redirectUrl = new URL('/', request.nextUrl.origin);
-    return NextResponse.redirect(redirectUrl)
-  }
+  //   const redirectUrl = new URL('/', request.nextUrl.origin);
+  //   return NextResponse.redirect(redirectUrl)
+  // }
 
   return NextResponse.next();
 

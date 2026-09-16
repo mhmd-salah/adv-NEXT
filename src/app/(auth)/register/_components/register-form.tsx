@@ -89,7 +89,7 @@ export default function RegisterForm() {
   useEffect(() => {
     // const unsubscribe = form.subscribe({
     //   name: 'username',
-    //   formState: {
+    //   formState: { 
     //     values: true,
     //     errors: true,
     //   },
