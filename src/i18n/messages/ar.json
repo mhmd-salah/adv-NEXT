@@ -1,4 +1,7 @@
 {
   "title": "مرحبا بكم",
-  "app-title": "تطبيق روز"
+  "app-title": "تطبيق روز",
+  "nice-to-have-your-hear-name": "يسعدني سماعك يا {name}",
+  "you-have-count-new-notification": "لديك {count} من الاشعارت الجديده",
+  "competation-rank": "تهانينا، لقد حصلت على المركز {rank, select, 1 {الأول} 2 {الثاني} other {#} } في المسابقة"
 }

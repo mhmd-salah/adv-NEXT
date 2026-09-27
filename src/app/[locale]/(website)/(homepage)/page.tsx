@@ -18,6 +18,7 @@ const categories = [
 // export const revalidate = 20;
 
 export default function HomePage() {
+  const username = 'ahmed';
   const t = useTranslations();
   console.log('homepage rendered');
   /**
@@ -36,7 +37,9 @@ export default function HomePage() {
   return (
     <main className="grow bg-zinc-800 flex flex-col items-center justify-center">
       <h1 className="text-white text-4xl font-bold">{t('title')}</h1>
-
+      <p>{t('nice-to-have-your-hear-name', { name: username })} </p>
+      <p>{t('you-have-count-new-notification', { count: 1 })}</p>
+      <p>{t('competation-rank',{rank: 4})}</p>
       <div className="flex flex-col">
         {categories.map((link) => (
           <Link key={link.id} href={`/categories/${link.slug}/${link.id}`}>

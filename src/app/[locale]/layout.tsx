@@ -18,6 +18,7 @@ const geistMono = Geist_Mono({
 });
 
 import { getTranslations } from 'next-intl/server';
+import Header from '@/components/shared/layout/headr';
 
 // Locale function props
 interface LocaleLayoutProps {
@@ -65,7 +66,10 @@ async function LocalLayout({ children, params }: LocaleLayoutProps) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <Providers>{children}</Providers>
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );
