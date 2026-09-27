@@ -1,69 +1,76 @@
-import { NextRequest, NextResponse } from "next/server";
-import { getToken } from "next-auth/jwt";
+// import { NextRequest, NextResponse } from 'next/server';
+// import { getToken } from 'next-auth/jwt';
+import createMiddleware from 'next-intl/middleware';
+import { routing } from './i18n/routing';
 
-const privateRoutes = new Set([
-  '/',
-  '/profile',
-  '/profile',
-]);
-const authRoutes = new Set([
-  '/login',
-  '/register',
-]);
+// const privateRoutes = new Set(['/', '/profile', '/profile']);
+// const authRoutes = new Set(['/login', '/register']);
 
-export default async function proxy(request: NextRequest) {
-  console.log(request.nextUrl.pathname)
-  const jwt = await getToken({ req: request });
-  const pathname = request.nextUrl.pathname;
+// Create middleware from routing
+export default createMiddleware(routing);
 
-  // User cannot access private routes without authentication
-  // User cannot access auth routes if they are authenticated
-
-  // if (privateRoutes.has(pathname)) {
-  //   if (jwt) return NextResponse.next();
-
-  //   const redirectUrl = new URL('/login', request.nextUrl.origin);
-
-  //   redirectUrl.searchParams.set('callbackUrl', pathname)
-
-  //   return NextResponse.redirect(redirectUrl)
-  // }
-
-  // if (authRoutes.has(pathname)) {
-  //   if (!jwt) return NextResponse.next();
-
-  //   const redirectUrl = new URL('/', request.nextUrl.origin);
-  //   return NextResponse.redirect(redirectUrl)
-  // }
-
-  return NextResponse.next();
-
-  // if (jwt) {
-  //   /*
-  //     1- Access private routes
-  //     2- Access auth routes
-  //     3- Access any other route (public)
-  //   */
-
-  //     if (privateRoutes.has(pathname)) return NextResponse.next();
-
-  //     if (authRoutes.has(pathname)) {
-  //       const redirectUrl = new URL('/', request.nextUrl.origin);
-
-  //       return NextResponse.redirect(redirectUrl)
-  //     }
-
-  //     return NextResponse.next();
-  // }
-}
-
+// Config
 export const config = {
-  /*
-    * Match all request paths except for the ones starting with:
-    * - api (API routes)
-    * - _next/static (static files)
-    * - _next/image (image optimization files)
-    * - favicon.ico, sitemap.xml, robots.txt (metadata files)
- */
-  matcher: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)'
-}
+  // Match all pathnames except for
+  // - … if they start with `/api`, `/trpc`, `/_next` or `/_vercel`
+  // - … the ones containing a dot (e.g. `favicon.ico`)
+  matcher: '/((?!api|trpc|_next|_vercel|.*\\..*).*)',
+};
+
+// Proxy Function
+// export default async function proxy(request: NextRequest) {
+//   console.log(request.nextUrl.pathname)
+//   const jwt = await getToken({ req: request });
+//   const pathname = request.nextUrl.pathname;
+
+//   // User cannot access private routes without authentication
+//   // User cannot access auth routes if they are authenticated
+
+//   // if (privateRoutes.has(pathname)) {
+//   //   if (jwt) return NextResponse.next();
+
+//   //   const redirectUrl = new URL('/login', request.nextUrl.origin);
+
+//   //   redirectUrl.searchParams.set('callbackUrl', pathname)
+
+//   //   return NextResponse.redirect(redirectUrl)
+//   // }
+
+//   // if (authRoutes.has(pathname)) {
+//   //   if (!jwt) return NextResponse.next();
+
+//   //   const redirectUrl = new URL('/', request.nextUrl.origin);
+//   //   return NextResponse.redirect(redirectUrl)
+//   // }
+
+//   return NextResponse.next();
+
+//   // if (jwt) {
+//   //   /*
+//   //     1- Access private routes
+//   //     2- Access auth routes
+//   //     3- Access any other route (public)
+//   //   */
+
+//   //     if (privateRoutes.has(pathname)) return NextResponse.next();
+
+//   //     if (authRoutes.has(pathname)) {
+//   //       const redirectUrl = new URL('/', request.nextUrl.origin);
+
+//   //       return NextResponse.redirect(redirectUrl)
+//   //     }
+
+//   //     return NextResponse.next();
+//   // }
+// }
+
+// export const config = {
+//   /*
+//     * Match all request paths except for the ones starting with:
+//     * - api (API routes)
+//     * - _next/static (static files)
+//     * - _next/image (image optimization files)
+//     * - favicon.ico, sitemap.xml, robots.txt (metadata files)
+//  */
+//   matcher: '/((?!api|_next/static|_next/image|favicon.ico|sitemap.xml|robots.txt).*)'
+// }
