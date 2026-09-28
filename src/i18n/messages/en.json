@@ -3,5 +3,6 @@
   "app-title": "Rose App",
   "nice-to-have-your-hear-name": "Nice to have your hear, {name}",
   "you-have-count-new-notification": "You have {count, plural, =0 {no notifications} =1 {# new notification} other {# new notifications}} .",
-  "competation-rank": "congrats, you have ranked {rank, selectordinal, one {1st} two {2end} few {3rd} other {#th}} in the competition"
+  "competation-rank": "congrats, you have ranked {rank, selectordinal, one {1st} two {2end} few {3rd} other {#th}} in the competition",
+  "logged-in-message": "{user} logged in, {gender,select,male {he} female {she} other {he}} has been away for {days} day."
 }
