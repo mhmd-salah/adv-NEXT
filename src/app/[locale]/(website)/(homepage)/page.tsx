@@ -19,6 +19,7 @@ const categories = [
 
 export default function HomePage() {
   const username = 'ahmed';
+  const items = ['HTML', 'CSS', 'JavaScript'];
   const t = useTranslations();
   const format = useFormatter();
   const dateTime = new Date('2026-11-20T08:30:00.000Z');
@@ -68,6 +69,7 @@ export default function HomePage() {
           unit: 'hour',
         })}{' '}
       </p>
+      <p>{format.list(items,{type:"unit"})}</p>
 
       <div className="flex flex-col">
         {categories.map((link) => (
