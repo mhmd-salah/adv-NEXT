@@ -1,4 +1,4 @@
-import { useTranslations } from 'next-intl';
+import { useFormatter, useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 const categories = [
@@ -20,6 +20,7 @@ const categories = [
 export default function HomePage() {
   const username = 'ahmed';
   const t = useTranslations();
+  const format = useFormatter();
   console.log('homepage rendered');
   /**
    * Params
@@ -42,9 +43,15 @@ export default function HomePage() {
       <p>{t('competation-rank', { rank: 4 })}</p>
       {/* Selecting enum-based values*/}
       <p>
-        {t('logged-in-message', { user: "esraa", gender: 'female', days: 10 })}
+        {t('logged-in-message', { user: 'esraa', gender: 'female', days: 10 })}
       </p>
-      
+      {/* Data and time */}
+      <p>Start data: {format.dateTime(new Date(),{
+        // dateStyle:"long"
+        year:"numeric",
+        month:"numeric"
+      })}</p>
+
       <div className="flex flex-col">
         {categories.map((link) => (
           <Link key={link.id} href={`/categories/${link.slug}/${link.id}`}>
