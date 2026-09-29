@@ -1,4 +1,4 @@
-import { useFormatter, useTranslations } from 'next-intl';
+import { useFormatter, useNow, useTranslations } from 'next-intl';
 import Link from 'next/link';
 
 const categories = [
@@ -21,6 +21,11 @@ export default function HomePage() {
   const username = 'ahmed';
   const t = useTranslations();
   const format = useFormatter();
+  const dateTime = new Date('2026-11-20T08:30:00.000Z');
+  // A reference point in time
+  const now = useNow({
+    updateInterval: 1000 * 10,
+  });
   console.log('homepage rendered');
   /**
    * Params
@@ -46,11 +51,23 @@ export default function HomePage() {
         {t('logged-in-message', { user: 'esraa', gender: 'female', days: 10 })}
       </p>
       {/* Data and time */}
-      <p>Start data: {format.dateTime(new Date(),{
-        // dateStyle:"long"
-        year:"numeric",
-        month:"numeric"
-      })}</p>
+      <p>
+        Start data:{' '}
+        {format.dateTime(new Date(), {
+          // dateStyle:"long"
+          year: 'numeric',
+          month: 'numeric',
+        })}
+      </p>
+
+      {/* Relative Time */}
+      <p>
+        ago{' '}
+        {format.relativeTime(dateTime, {
+          now,
+          unit: 'hour',
+        })}{' '}
+      </p>
 
       <div className="flex flex-col">
         {categories.map((link) => (
