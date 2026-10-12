@@ -1,7 +1,9 @@
+"use client"
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { registerSchema, TRegisterForm } from "../../schema/register.schema";
 import { useMutation } from "@tanstack/react-query";
+import { zodResolver } from '@hookform/resolvers/zod';
 
 async function registerUser(data: TRegisterForm) {
   const response = await fetch(`/api/register`, {
